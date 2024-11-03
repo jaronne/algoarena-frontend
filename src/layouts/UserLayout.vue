@@ -1,12 +1,10 @@
-<script setup lang="ts">
-import GlobalHeader from "@/components/GlobalHeader.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div id="basicLayout">
+  <div id="userLayout">
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
-        <GlobalHeader />
+        <img src="../assets/logo.png" class="logo" />
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
@@ -19,20 +17,28 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
 </template>
 
 <style scoped>
-#basicLayout {
+#userLayout {
+  text-align: center;
 }
 
-#basicLayout .header {
-  margin-bottom: 16px;
-  box-shadow: #eee 1px 1px 5px;
+#userLayout .logo {
+  width: 64px;
+  height: 64px;
 }
 
-#basicLayout .content {
-  margin-bottom: 16px;
-  padding: 200px;
+#userLayout .header {
+  margin-top: 16px;
 }
 
-#basicLayout .footer {
+#userLayout .content {
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffffff, #efefef);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+#userLayout .footer {
   background: #efefef;
   padding: 16px;
   position: sticky;
