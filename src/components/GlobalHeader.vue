@@ -43,6 +43,7 @@ import ACCESS_ENUM from "@/access/accessEnum";
 const router = useRouter();
 const store = useStore();
 // 需要展示在导航栏的路由
+// 不写computed的话，只会在页面加载时执行一次，不会动态更新，写了computed就会动态更新
 const visibleRoutes = computed(() => {
   return routes.filter((item, index) => {
     if (item.meta?.hideInMenu) {
@@ -71,13 +72,6 @@ const doMenuClick = (key: string) => {
     path: key,
   });
 };
-
-setTimeout(() => {
-  store.dispatch("user/getLoginUser", {
-    userName: "管理员",
-    userRole: ACCESS_ENUM.ADMIN,
-  });
-}, 3000);
 </script>
 
 <style scoped>

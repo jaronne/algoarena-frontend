@@ -40,6 +40,7 @@
         </div>
       </a-form-item>
     </a-form>
+    <a-link class="return" href="/">返回首页</a-link>
   </div>
 </template>
 
@@ -94,5 +95,9 @@ const handleSubmit = async () => {
   border-radius: 8px; /* 圆角 */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
   background-color: #fff; /* 表单背景颜色 */
+}
+
+#userLoginView .return {
+  margin-top: 20px;
 }
 </style>
