@@ -2,15 +2,12 @@
   <a-row id="globalHeader" align="center" :wrap="false">
     <a-col flex="auto">
       <a-menu
+        class="menu"
         mode="horizontal"
         :selected-keys="selectedKeys"
         @menu-item-click="doMenuClick"
       >
-        <a-menu-item
-          key="0"
-          :style="{ padding: 0, marginRight: '38px' }"
-          disabled
-        >
+        <a-menu-item key="0" :style="{ padding: 0 }" disabled>
           <div class="title-bar">
             <img class="logo" src="../assets/logo.png" />
             <div class="title">AlgoArena</div>
@@ -21,7 +18,7 @@
         </a-menu-item>
       </a-menu>
     </a-col>
-    <a-col flex="100px">
+    <a-col class="loginUser" flex="100px">
       <div v-if="store.state.user.loginUser.id">
         {{ store.state.user.loginUser.userName ?? "无名" }}
       </div>
@@ -38,7 +35,6 @@ import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
-import ACCESS_ENUM from "@/access/accessEnum";
 
 const router = useRouter();
 const store = useStore();
@@ -75,7 +71,15 @@ const doMenuClick = (key: string) => {
 </script>
 
 <style scoped>
+#globalHeader {
+  max-width: 1300px;
+  flex-grow: 1;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title-bar {
+  margin-left: 15px;
   display: flex;
   align-items: center;
 }
