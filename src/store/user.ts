@@ -22,6 +22,19 @@ export default {
         });
       }
     },
+    async userLoginOut({ commit, state }: any) {
+      const res = await UserControllerService.userLogoutUsingPost();
+      if (res.code === 0) {
+        commit("setUserInfo", {
+          ...state.loginUser,
+          UserRole: ACCESS_ENUM.NOT_LOGIN,
+        });
+      }
+      commit("setUserInfo", {
+        ...state.loginUser,
+        UserRole: ACCESS_ENUM.NOT_LOGIN,
+      });
+    },
   },
   mutations: {
     updateUser(state, payload) {

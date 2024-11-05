@@ -20,7 +20,14 @@
     </a-col>
     <a-col class="loginUser" flex="100px">
       <div v-if="store.state.user.loginUser.id">
-        {{ store.state.user.loginUser.userName ?? "无名" }}
+        <a-dropdown>
+          <a-button>{{
+            store.state.user.loginUser.userName ?? "无名"
+          }}</a-button>
+          <template #content>
+            <a-doption @click="logout">登出</a-doption>
+          </template>
+        </a-dropdown>
       </div>
       <div v-else>
         <a-button type="primary" href="/user/login">登录</a-button>
@@ -35,6 +42,7 @@ import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
+import message from "@arco-design/web-vue/es/message";
 
 const router = useRouter();
 const store = useStore();
@@ -67,6 +75,12 @@ const doMenuClick = (key: string) => {
   router.push({
     path: key,
   });
+};
+
+const logout = async () => {
+  await store.dispatch("user/userLoginOut", {});
+  message.success("登出成功");
+  location.reload();
 };
 </script>
 

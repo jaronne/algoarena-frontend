@@ -121,9 +121,10 @@ import { onMounted, ref } from "vue";
 import MdEditor from "@/components/MdEditor.vue";
 import { QuestionControllerService } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 // 如果页面地址包含 update，视为更新页面
 const updatePage = route.path.includes("update");
 
@@ -232,6 +233,9 @@ const doSubmit = async () => {
     );
     if (res.code === 0) {
       message.success("更新成功");
+      await router.push({
+        path: "/manage/question",
+      });
     } else {
       message.error("更新失败，" + res.message);
     }
