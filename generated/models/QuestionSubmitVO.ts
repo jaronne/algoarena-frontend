@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { JudgeInfo } from './JudgeInfo';
+import type { Question } from './Question';
 import type { UserVO } from './UserVO';
 export type QuestionSubmitVO = {
     code?: string;
@@ -10,7 +11,7 @@ export type QuestionSubmitVO = {
     id?: number;
     judgeInfo?: JudgeInfo;
     language?: string;
-    questionId?: number;
+    question?: Question;
     status?: number;
     updateTime?: string;
     user?: UserVO;

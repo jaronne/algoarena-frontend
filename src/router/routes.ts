@@ -10,6 +10,8 @@ import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionsView from "@/views/question/QuestionsView.vue";
 import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
 import QuestionSubmitView from "@/views/question/QuestionSubmitView.vue";
+import MyQuestionSubmitView from "@/views/question/MyQuestionSubmitView.vue";
+import QuestionCalendarView from "@/views/question/QuestionCalendarView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -23,9 +25,22 @@ export const routes: Array<RouteRecordRaw> = [
     component: QuestionsView,
   },
   {
+    path: "/my_question_submit",
+    name: "我的提交",
+    component: MyQuestionSubmitView,
+  },
+  {
     path: "/question_submit",
-    name: "题目提交",
+    name: "所有提交",
     component: QuestionSubmitView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/question/calendar",
+    name: "答题日历",
+    component: QuestionCalendarView,
   },
   {
     path: "/view/question/:id",

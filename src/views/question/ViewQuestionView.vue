@@ -78,6 +78,9 @@ import {
   QuestionSubmitControllerService,
   QuestionVO,
 } from "../../../generated";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 interface Props {
   id: string;
@@ -119,6 +122,9 @@ const doSubmit = async () => {
   });
   if (res.code === 0) {
     message.success("提交成功");
+    router.push({
+      path: "/my_question_submit",
+    });
   } else {
     message.error("提交失败," + res.message);
   }

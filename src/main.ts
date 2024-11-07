@@ -7,10 +7,21 @@ import router from "./router";
 import store from "./store";
 import "@/access";
 import "bytemd/dist/index.css";
+import "highlight.js/styles/stackoverflow-light.css";
+import hljs from "highlight.js/lib/core";
+import hljsVuePlugin from "@highlightjs/vue-plugin";
+import java from "highlight.js/lib/languages/java";
+import Echarts from "vue-echarts";
+import * as echarts from "echarts";
 
-createApp(App)
-  .use(ArcoVue)
-  .use(ArcoVueIcon)
-  .use(store)
-  .use(router)
-  .mount("#app");
+hljs.registerLanguage("java", java);
+
+const app = createApp(App);
+app.use(ArcoVue);
+app.use(ArcoVueIcon);
+app.use(hljsVuePlugin);
+app.use(store);
+app.use(router);
+app.component("e-charts", Echarts);
+app.config.globalProperties.$echarts = echarts;
+app.mount("#app");
