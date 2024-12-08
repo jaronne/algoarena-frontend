@@ -3,6 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BaseResponse_boolean_ } from "../models/BaseResponse_boolean_";
+import type { BaseResponse_List_int_ } from "../models/BaseResponse_List_int_";
 import type { BaseResponse_LoginUserVO_ } from "../models/BaseResponse_LoginUserVO_";
 import type { BaseResponse_long_ } from "../models/BaseResponse_long_";
 import type { BaseResponse_Page_User_ } from "../models/BaseResponse_Page_User_";
@@ -97,6 +98,29 @@ export class UserControllerService {
     return __request(OpenAPI, {
       method: "GET",
       url: "/api/user/get/login",
+      errors: {
+        401: `Unauthorized`,
+        403: `Forbidden`,
+        404: `Not Found`,
+      },
+    });
+  }
+
+  /**
+   * getUserSignInRecord
+   * @param year year
+   * @returns BaseResponse_List_int_ OK
+   * @throws ApiError
+   */
+  public static getUserSignInRecordUsingGet(
+    year?: number
+  ): CancelablePromise<BaseResponse_List_int_> {
+    return __request(OpenAPI, {
+      method: "GET",
+      url: "/api/user/get/sign_in",
+      query: {
+        year: year,
+      },
       errors: {
         401: `Unauthorized`,
         403: `Forbidden`,

@@ -32,8 +32,12 @@
               </template>
             </a-card>
           </a-tab-pane>
-          <a-tab-pane key="comment" title="评论" disabled> 评论区</a-tab-pane>
-          <a-tab-pane key="answer" title="答案"> 暂时无法查看答案</a-tab-pane>
+          <a-tab-pane key="submit" title="本题提交">
+            请在“我的提交”页面搜索本题id：{{ question?.id }}
+          </a-tab-pane>
+          <a-tab-pane key="answer" title="答案">
+            <MdViewer :value="question?.answer || ''" />
+          </a-tab-pane>
         </a-tabs>
       </a-col>
       <a-col :md="12" :xs="24">
@@ -79,6 +83,7 @@ import {
   QuestionVO,
 } from "../../../generated";
 import { useRouter } from "vue-router";
+import java from "highlight.js/lib/languages/java";
 
 const router = useRouter();
 
@@ -142,13 +147,4 @@ const changeCode = (value: string) => {
 };
 </script>
 
-<style>
-#viewQuestionView {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-#viewQuestionView .arco-space-horizontal .arco-space-item {
-  margin-bottom: 0 !important;
-}
-</style>
+<style></style>
